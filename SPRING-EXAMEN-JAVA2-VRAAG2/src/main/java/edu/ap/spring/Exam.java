@@ -34,6 +34,10 @@ public class Exam {
 	// dat string s voorkomt (zowel uppercase als lowercase) in de lijst names
 	// 1 punt
 	public int countChar(List<String> names, String s) {
+		int result = (int)names.stream()
+			.filter(i -> i.toLowerCase().contains(s.toLowerCase()))
+			.map(i -> i.toLowerCase().split(s.toLowerCase()))
+			.count();
 		return 6;	
 	}
 	

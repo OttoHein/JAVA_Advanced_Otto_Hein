@@ -15,10 +15,13 @@ public class UI {
 	@Autowired
 	RetrieveQuotes retrieveQuotes;
 	
+	@Autowired
+	Search search;
+	
 	private JFrame jFrame;
 	private JPanel controlPanel;
-    private JButton btnQuotesToDatabase, btnRetrieveQuotes;
-    private JTextField txtOutput;
+    private JButton btnQuotesToDatabase, btnRetrieveQuotes, btnSearch;
+    private JTextField txtOutput, txtResult;
     
     public UI() {}
     
@@ -39,11 +42,20 @@ public class UI {
 		btnRetrieveQuotes.setTransferHandler(new TransferHandler("text"));
 		btnRetrieveQuotes.addActionListener(retrieveQuotes::whenButtonClicked);
 		
+		btnSearch = new JButton();
+		btnSearch.setText("Search for this");
+		btnSearch.setTransferHandler(new TransferHandler("text"));
+		btnSearch.addActionListener(search::whenButtonClicked);
+		
 		txtOutput = new JTextField();
 		txtOutput.setText("No output yet");
+		
+		txtResult = new JTextField();
 
 		controlPanel.add(btnQuotesToDatabase);
 		controlPanel.add(btnRetrieveQuotes);
+		controlPanel.add(txtResult);
+		controlPanel.add(btnSearch);
 		
 		jFrame.add(txtOutput);
 		jFrame.add(controlPanel);
@@ -69,6 +81,14 @@ public class UI {
 
 	public void setLblOutput(JTextField txtOutput) {
 		this.txtOutput = txtOutput;
+	}
+
+	public JTextField getTxtResult() {
+		return txtResult;
+	}
+
+	public void setTxtResult(JTextField txtResult) {
+		this.txtResult = txtResult;
 	}
     
     
