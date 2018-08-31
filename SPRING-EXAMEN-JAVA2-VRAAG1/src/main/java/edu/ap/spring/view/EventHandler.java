@@ -30,7 +30,7 @@ public class EventHandler {
     public void whenButtonClicked(ActionEvent actionEvent) {
     	
         // The name of the file to open.
-        String fileName = "temp.txt";
+        String fileName = "oscar_wilde.txt";
 
         // This will reference one line at a time
         String line = null;
@@ -45,7 +45,8 @@ public class EventHandler {
                 new BufferedReader(fileReader);
 
             while((line = bufferedReader.readLine()) != null) {
-            	Quote quote = new Quote(line);
+            	Quote quote = new Quote();
+            	quote.setText(line);
                 repository.save(quote);
             }   
 
@@ -68,5 +69,7 @@ public class EventHandler {
         System.out.println("Quotes saved in repository");
         System.out.println("Find all : ") ;
         repository.findAll().forEach(System.out::println);
+        
+        
     }
 }

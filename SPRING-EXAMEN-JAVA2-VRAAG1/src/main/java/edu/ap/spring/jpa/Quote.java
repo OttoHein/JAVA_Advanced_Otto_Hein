@@ -29,10 +29,11 @@ public class Quote {
 		this.text = text;
 	}
 
-	public Quote(String text) {
+	public Quote() {
 		super();
-		this.text = text;
 	}
+	
+	
 
 	@Override
 	public String toString() {
