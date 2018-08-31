@@ -12,9 +12,13 @@ public class UI {
 	@Autowired
 	EventHandler eventHandler;
 	
+	@Autowired
+	RetrieveQuotes retrieveQuotes;
+	
 	private JFrame jFrame;
 	private JPanel controlPanel;
-    private JButton btnQuotesToDatabase;
+    private JButton btnQuotesToDatabase, btnRetrieveQuotes;
+    private JTextField txtOutput;
     
     public UI() {}
     
@@ -29,9 +33,19 @@ public class UI {
 		btnQuotesToDatabase.setText("Add quotes to database");
 		btnQuotesToDatabase.setTransferHandler(new TransferHandler("text"));
 		btnQuotesToDatabase.addActionListener(eventHandler::whenButtonClicked);
+		
+		btnRetrieveQuotes = new JButton();
+		btnRetrieveQuotes.setText("Show me the saved quotes");
+		btnRetrieveQuotes.setTransferHandler(new TransferHandler("text"));
+		btnRetrieveQuotes.addActionListener(retrieveQuotes::whenButtonClicked);
+		
+		txtOutput = new JTextField();
+		txtOutput.setText("No output yet");
 
 		controlPanel.add(btnQuotesToDatabase);
-
+		controlPanel.add(btnRetrieveQuotes);
+		
+		jFrame.add(txtOutput);
 		jFrame.add(controlPanel);
 		        
 		jFrame.setSize(1000, 1000);
@@ -48,5 +62,15 @@ public class UI {
     public JButton getButton() {
         return btnQuotesToDatabase;
     }
+
+	public JTextField getLblOutput() {
+		return txtOutput;
+	}
+
+	public void setLblOutput(JTextField txtOutput) {
+		this.txtOutput = txtOutput;
+	}
+    
+    
     
 }
