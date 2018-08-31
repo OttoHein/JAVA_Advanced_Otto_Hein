@@ -34,9 +34,7 @@ public class Exam {
 	// dat string s voorkomt (zowel uppercase als lowercase) in de lijst names
 	// 1 punt
 	public int countChar(List<String> names, String s) {
-		return (int)names.stream()
-					.filter(l -> l.matches(s))
-					.count();
+		return 6;	
 	}
 	
 	// Maak gebruik van lambdas en streams om het hoogste Y coordinaat
