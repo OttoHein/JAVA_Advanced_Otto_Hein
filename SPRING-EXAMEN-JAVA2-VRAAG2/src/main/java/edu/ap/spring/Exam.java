@@ -43,5 +43,8 @@ public class Exam {
 	// te vinden
 	// 2 punten
 	public int getMaxY(List<Point> points) {
+		return points.stream()
+				.mapToInt(i -> (int)i.getY())
+				.max().orElseThrow(NoSuchElementException::new);	
 	}	
 }
